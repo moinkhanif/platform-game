@@ -21,22 +21,22 @@ const SHARED_CONFIG = {
   debug: false,
   leftTopCorner: {
     x: (WIDTH - (WIDTH / ZOOM_FACTOR)) / 2,
-    y: (HEIGHT - (HEIGHT / ZOOM_FACTOR)) / 2
+    y: (HEIGHT - (HEIGHT / ZOOM_FACTOR)) / 2,
   },
   rightTopCorner: {
     x: ((WIDTH / ZOOM_FACTOR) + ((WIDTH - (WIDTH / ZOOM_FACTOR)) / 2)),
-    y: (HEIGHT - (HEIGHT / ZOOM_FACTOR)) / 2
+    y: (HEIGHT - (HEIGHT / ZOOM_FACTOR)) / 2,
   },
   rightBottomCorner: {
     x: ((WIDTH / ZOOM_FACTOR) + ((WIDTH - (WIDTH / ZOOM_FACTOR)) / 2)),
     y: ((HEIGHT / ZOOM_FACTOR) + ((HEIGHT - (HEIGHT / ZOOM_FACTOR)) / 2)),
   },
-  lastLevel: 2
-}
+  lastLevel: 2,
+};
 
 const Scenes = [PreloadScene, MenuScene, LevelScene, PlayScene, CreditsScene];
-const createScene = Scene => new Scene(SHARED_CONFIG)
-const initScenes = () => Scenes.map(createScene)
+const createScene = Scene => new Scene(SHARED_CONFIG);
+const initScenes = () => Scenes.map(createScene);
 
 const config = {
   type: Phaser.AUTO,
@@ -46,10 +46,10 @@ const config = {
     default: 'arcade',
     arcade: {
       debug: SHARED_CONFIG.debug,
-    }
+    },
   },
-  scene: initScenes();
-}
+  scene: initScenes(),
+};
 
 // eslint-disable-next-line no-new
 new Phaser.Game(config);
