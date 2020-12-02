@@ -1,5 +1,4 @@
 
-
 import Phaser from 'phaser';
 
 class EventEmitter extends Phaser.Events.EventEmitter {
