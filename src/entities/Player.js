@@ -6,7 +6,7 @@ import collidable from '../mixins/collidable';
 import anims from '../mixins/anims';
 import Projectiles from '../attacks/Projectiles';
 import MeleeWeapon from '../attacks/MeleeWeapon';
-import { getTimestamp } from '../utils/functions';
+import getTimestamp from '../utils/functions';
 import EventEmitter from '../events/Emitter';
 
 class Player extends Phaser.Physics.Arcade.Sprite {
@@ -106,7 +106,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
     if (isSpaceJustDown && (onFloor || this.jumpCount < this.consecutiveJumps)) {
       this.jumpSound.play();
       this.setVelocityY(-this.playerSpeed * 2);
-      this.jumpCount++;
+      this.jumpCount += 1;
     }
 
     if (onFloor) {
@@ -117,10 +117,15 @@ class Player extends Phaser.Physics.Arcade.Sprite {
       return;
     }
 
-    onFloor
-      ? this.body.velocity.x !== 0
-        ? this.play('run', true) : this.play('idle', true)
-      : this.play('jump', true);
+    if (onFloor) {
+      if (this.body.velocity.x !== 0) {
+        this.play('run', true);
+      } else {
+        this.play('idle', true);
+      }
+    } else {
+      this.play('jump', true);
+    }
   }
 
   handleAttacks() {
@@ -132,7 +137,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 
     this.scene.input.keyboard.on('keydown-E', () => {
       if (this.timeFromLastSwing
-          && this.timeFromLastSwing + this.meleeWeapon.attackSpeed > getTimestamp()) {
+        && this.timeFromLastSwing + this.meleeWeapon.attackSpeed > getTimestamp()) {
         return;
       }
 
@@ -172,13 +177,15 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 
   bounceOff(source) {
     if (source.body) {
-      this.body.touching.right
-        ? this.setVelocityX(-this.bounceVelocity)
-        : this.setVelocityX(this.bounceVelocity);
+      if (this.body.touching.right) {
+        this.setVelocityX(-this.bounceVelocity);
+      } else {
+        this.setVelocityX(this.bounceVelocity);
+      }
+    } else if (this.body.blocked.right) {
+      this.setVelocityX(-this.bounceVelocity);
     } else {
-      this.body.blocked.right
-        ? this.setVelocityX(-this.bounceVelocity)
-        : this.setVelocityX(this.bounceVelocity);
+      this.setVelocityX(this.bounceVelocity);
     }
 
     setTimeout(() => this.setVelocityY(-this.bounceVelocity), 0);
@@ -197,8 +204,6 @@ class Player extends Phaser.Physics.Arcade.Sprite {
     this.bounceOff(source);
     const hitAnim = this.playDamageTween();
     this.hp.decrease(this.health);
-
-    source.deliversHit && source.deliversHit(this);
 
     this.scene.time.delayedCall(1000, () => {
       this.hasBeenHit = false;

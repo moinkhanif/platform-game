@@ -1,6 +1,6 @@
 
 import Phaser from 'phaser';
-import { ENEMY_TYPES } from '../types';
+import ENEMY_TYPES from '../types';
 import collidable from '../mixins/collidable';
 
 class Enemies extends Phaser.GameObjects.Group {
@@ -13,13 +13,13 @@ class Enemies extends Phaser.GameObjects.Group {
   getProjectiles() {
     const projectiles = new Phaser.GameObjects.Group();
 
-    this.getChildren().forEach(enemy => {
-      enemy.projectiles && projectiles.addMultiple(enemy.projectiles.getChildren());
-    });
+    this.getChildren().forEach(enemy => enemy.projectiles && projectiles
+      .addMultiple(enemy.projectiles.getChildren()));
 
     return projectiles;
   }
 
+  // eslint-disable-next-line class-methods-use-this
   getTypes() {
     return ENEMY_TYPES;
   }

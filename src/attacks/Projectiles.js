@@ -1,7 +1,7 @@
 
 import Phaser from 'phaser';
 import Projectile from './Projectile';
-import { getTimestamp } from '../utils/functions';
+import getTimestamp from '../utils/functions';
 
 class Projectiles extends Phaser.Physics.Arcade.Group {
   constructor(scene, key) {

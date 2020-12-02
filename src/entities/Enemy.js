@@ -62,7 +62,8 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
 
     this.currentPatrolDistance += Math.abs(this.body.deltaX());
 
-    const { ray, hasHit } = this.raycast(this.body, this.platformCollidersLayer, { precision: 1, steepnes: 0.2 });
+    const { ray, hasHit } = this.raycast(this.body,
+      this.platformCollidersLayer, { precision: 1, steepnes: 0.2 });
 
     if ((!hasHit || this.currentPatrolDistance >= this.maxPatrolDistance)
          && this.timeFromLastTurn + 100 < time) {
@@ -81,9 +82,6 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
   setPlatformColliders(platformCollidersLayer) {
     this.platformCollidersLayer = platformCollidersLayer;
   }
-
-  // Enemy is source of the damage for the player
-  deliversHit() {}
 
   takesHit(source) {
     source.deliversHit(this);

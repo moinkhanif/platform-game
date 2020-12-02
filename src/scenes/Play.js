@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 
 import Phaser from 'phaser';
 import Player from '../entities/Player';
@@ -125,7 +126,6 @@ class Play extends Phaser.Scene {
 
   createGameEvents() {
     EventEmitter.on('PLAYER_LOOSE', () => {
-      console.log('Helko!');
       this.scene.restart({ gameStatus: 'PLAYER_LOOSE' });
     });
   }
@@ -147,8 +147,7 @@ class Play extends Phaser.Scene {
     const enemies = new Enemies(this);
     const enemyTypes = enemies.getTypes();
 
-    spawnLayer.objects.forEach((spawnPoint, i) => {
-      // if (i === 1) { return; }
+    spawnLayer.objects.forEach((spawnPoint) => {
       const enemy = new enemyTypes[spawnPoint.type](this, spawnPoint.x, spawnPoint.y);
       enemy.setPlatformColliders(platformsColliders);
       enemies.add(enemy);

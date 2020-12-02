@@ -38,7 +38,7 @@ class Projectile extends Phaser.Physics.Arcade.Sprite {
     this.body.reset(x, y);
     this.setVelocityX(this.speed);
 
-    anim && this.play(anim, true);
+    return anim && this.play(anim, true);
   }
 
   deliversHit(target) {

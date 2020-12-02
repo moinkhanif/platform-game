@@ -1,4 +1,4 @@
-
+import Phaser from 'phaser';
 import Enemy from './Enemy';
 import initAnims from './anims/snakyAnims';
 import Projectiles from '../attacks/Projectiles';
@@ -46,6 +46,7 @@ class Snaky extends Enemy {
     this.play('snaky-walk', true);
   }
 
+  // eslint-disable-next-line class-methods-use-this
   getAttackDelay() {
     return Phaser.Math.Between(1000, 4000);
   }

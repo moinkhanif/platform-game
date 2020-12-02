@@ -12,6 +12,7 @@ class Collectables extends Phaser.Physics.Arcade.StaticGroup {
     });
   }
 
+  // eslint-disable-next-line class-methods-use-this
   mapProperties(propertiesList) {
     if (!propertiesList || propertiesList.length === 0) { return {}; }
 

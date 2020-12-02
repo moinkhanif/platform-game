@@ -12,7 +12,7 @@ class LevelScene extends BaseScene {
     this.menu = [];
     const levels = this.registry.get('unlocked-levels');
 
-    for (let i = 1; i <= levels; i++) {
+    for (let i = 1; i <= levels; i += 1) {
       this.menu.push({
         scene: 'PlayScene', text: `Level ${i}`, level: i,
       });
