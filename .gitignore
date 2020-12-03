@@ -1,5 +1,6 @@
 #Linter files
 .eslintrc.json
+.stylelintrc.json
 # Logs
 logs
 *.log
@@ -83,6 +84,7 @@ typings/
 # Nuxt.js build / generate output
 .nuxt
 dist
+build
 
 # Gatsby files
 .cache/
