@@ -1,6 +1,3 @@
-#Linter files
-.eslintrc.json
-.stylelintrc.json
 # Logs
 logs
 *.log

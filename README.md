@@ -9,7 +9,26 @@
 
 ## About the project
 
-This is a platform game which was created using Phaser library and the given assets in itch.io  . 
+This is a platform game which was created using Phaser library and the given assets in itch.io  .
+
+## Setting up game on your local machine
+
+- Make sure you have node installed.
+- Clone this repository.
+- Open this project in a code editor.
+- Open a terminal in this directory path.
+- Run `npm install` and wait for all the dependencies to install.
+- To run the project in development mode, run `npm run dev`.
+- Open `http://localhost:8080/` link in your browser and you should be able to play the game now.
+
+## How to play the game
+
+- Click on `Play` option to start the game.
+- Use `right arrow` key and `left arrow` key on your keyboard to move right and left respectively.
+- Press the `Q` key on your keyboard to send a projectile attack at enemies.
+- Press the `E` key to attack using the weapon.
+- Press the space bar to jump.
+- The user is allowed to jump twice. Once on the ground and once in mid air.
 
 ## Features
 
@@ -18,7 +37,7 @@ Some of the features on the game include:
 - Player functions like jumping, projectile attacks and weapon attack.
 - The player is supposed to get as many gems as possible.
 - Enemies include birdman and snaky
-- Snaky enemy has the ability to attack
+- Snaky enemy has the ability to throw a projectile attack.
 - There are two levels in the game
 
 ## Project specifications
@@ -28,8 +47,8 @@ Some of the features on the game include:
 
 ## Potential Future Features
 
-  - Mobile compatibility
-  - UI/UX
+- Mobile compatibility
+- UI/UX
 
 ## Technologies Used
 

@@ -150,8 +150,6 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 
   handleMovements() {
     this.scene.input.keyboard.on('keydown-DOWN', () => {
-      // if (!this.body.onFloor()) { return; }
-
       this.body.setSize(this.width, this.height / 2);
       this.setOffset(0, this.height / 2);
       this.setVelocityX(0);
