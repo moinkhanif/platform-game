@@ -99,8 +99,8 @@ class Preload extends Phaser.Scene {
         e.preventDefault();
         if (inputText.checkValidity()) {
           const name = inputText.value;
-          const score = 0;
-          localStorage.setItem('playerInfo', JSON.stringify({ name, score }));
+          const total = 0;
+          localStorage.setItem('playerInfo', JSON.stringify({ name, total }));
           form.remove();
           this.scene.start('MenuScene');
         }

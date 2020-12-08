@@ -225,7 +225,22 @@ class Play extends Phaser.Scene {
       this.registry.inc('level', 1);
       this.registry.inc('unlocked-levels', 1);
       this.scene.restart({ gameStatus: 'LEVEL_COMPLETED' });
+      this.updateScore();
     });
+  }
+
+  updateScore() {
+    const playerInfo = JSON.parse(localStorage.getItem('playerInfo'));
+    playerInfo.total = this.score;
+    localStorage.setItem('playerInfo', JSON.stringify(playerInfo));
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(playerInfo),
+    };
+    fetch('https://backend.moinkhanif.dev/api/v1/mk-platform-game', options);
   }
 
   update() {
