@@ -1,6 +1,8 @@
 
 import Phaser from 'phaser';
 
+const playerName = localStorage.getItem('playerName');
+
 class Preload extends Phaser.Scene {
   constructor() {
     super('PreloadScene');
@@ -79,8 +81,31 @@ class Preload extends Phaser.Scene {
   startGame() {
     this.registry.set('level', 1);
     this.registry.set('unlocked-levels', 1);
-
-    this.scene.start('MenuScene');
+    if (playerName) {
+      this.scene.start('MenuScene');
+    } else {
+      const body = document.querySelector('body');
+      const form = body.appendChild(document.createElement('form'));
+      form.id = 'name-form';
+      const formTitle = form.appendChild(document.createElement('h2'));
+      formTitle.textContent = 'Please enter player name:';
+      const inputText = form.appendChild(document.createElement('input'));
+      inputText.setAttribute('type', 'text');
+      inputText.minLength = 3;
+      inputText.setAttribute('placeholder', 'Enter your name...');
+      inputText.setAttribute('required', true);
+      const submit = form.appendChild(document.createElement('input'));
+      submit.setAttribute('type', 'submit');
+      submit.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (inputText.checkValidity()) {
+          const name = inputText.value;
+          localStorage.setItem('playerName', name);
+          form.remove();
+          this.scene.start('MenuScene');
+        }
+      });
+    }
   }
 }
 

@@ -27,7 +27,8 @@ This is a platform game which was created using Phaser library and the given ass
 - Use `right arrow` key and `left arrow` key on your keyboard to move right and left respectively.
 - Press the `Q` key on your keyboard to send a projectile attack at enemies.
 - Press the `E` key to attack using the weapon.
-- Press the space bar to jump.
+- Press the `space bar` or `UP arrow key` to jump.
+- Use the `down arrow key` to duck projectile attacks.
 - The user is allowed to jump twice. Once on the ground and once in mid air.
 
 ## Features
