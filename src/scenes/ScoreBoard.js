@@ -17,7 +17,7 @@ class ScoreBoard extends BaseScene {
   }
 
   async getData() {
-    this.data = await fetch('http://localhost:3000/api/v1/mk-platform-game');
+    this.data = await fetch('https://backend.moinkhanif.dev/api/v1/mk-platform-game');
     console.log(this.data);
   }
 }
