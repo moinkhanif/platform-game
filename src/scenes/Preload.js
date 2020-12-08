@@ -1,8 +1,7 @@
 
 import Phaser from 'phaser';
 
-const playerName = localStorage.getItem('playerName');
-
+const playerInfo = JSON.parse(localStorage.getItem('playerInfo'));
 class Preload extends Phaser.Scene {
   constructor() {
     super('PreloadScene');
@@ -81,7 +80,7 @@ class Preload extends Phaser.Scene {
   startGame() {
     this.registry.set('level', 1);
     this.registry.set('unlocked-levels', 1);
-    if (playerName) {
+    if (playerInfo) {
       this.scene.start('MenuScene');
     } else {
       const body = document.querySelector('body');
@@ -100,7 +99,8 @@ class Preload extends Phaser.Scene {
         e.preventDefault();
         if (inputText.checkValidity()) {
           const name = inputText.value;
-          localStorage.setItem('playerName', name);
+          const score = 0;
+          localStorage.setItem('playerInfo', JSON.stringify({ name, score }));
           form.remove();
           this.scene.start('MenuScene');
         }
