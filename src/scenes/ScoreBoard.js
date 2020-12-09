@@ -18,18 +18,6 @@ class ScoreBoard extends BaseScene {
   async setMenu() {
     this.menu = await returnMenu();
   }
-
-  // async getData() {
-  //   try {
-  //     this.data = await fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/VVQuSwQddoQIFiYmWVCR/scores/');
-  //     const json = await this.data.json();
-  //     return json;
-  //   } catch (error) {
-  //     this.data = await fetch('https://backend.moinkhanif.dev/api/v1/mk-platform-game');
-  //     const json = await this.data.json();
-  //     return json;
-  //   }
-  // }
 }
 
 export default ScoreBoard;

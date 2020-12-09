@@ -55,6 +55,10 @@ Some of the features on the game include:
 
 - This project utilizes the Phaser library
 
+## Initial Objective
+
+My initial objective(first 2 days) for this project was to get started with the phaser initialization and set up the background tiles for play scene. I ended up using `Tiled Map Editor` for the same.
+
 <!-- 
 
 ## Testing
