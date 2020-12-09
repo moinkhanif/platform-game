@@ -231,7 +231,7 @@ class Play extends Phaser.Scene {
 
   updateScore() {
     const playerInfo = JSON.parse(localStorage.getItem('playerInfo'));
-    playerInfo.total = this.score;
+    playerInfo.score = this.score;
     localStorage.setItem('playerInfo', JSON.stringify(playerInfo));
     const options = {
       method: 'POST',
@@ -240,7 +240,11 @@ class Play extends Phaser.Scene {
       },
       body: JSON.stringify(playerInfo),
     };
-    fetch('https://backend.moinkhanif.dev/api/v1/mk-platform-game', options);
+    try {
+      fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/VVQuSwQddoQIFiYmWVCR/scores/', options);
+    } catch (error) {
+      fetch('https://backend.moinkhanif.dev/api/v1/mk-platform-game', options);
+    }
   }
 
   update() {
